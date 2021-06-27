@@ -1,0 +1,167 @@
+$main_bg: hsl(233, 47%, 7%);
+$card_bg: hsl(244, 38%, 16%);
+$accent: hsl(277, 64%, 61%);
+// font
+$inter_font: "Inter", sans-serif;
+$lexend_deca_font: "Lexend Deca", sans-serif;
+// color
+$main_heading: #fff;
+$main_paragraph: hsla(0, 0%, 100%, 0.75);
+$stat_headings: hsla(0, 0%, 100%, 0.6);
+
+// display
+@mixin flex {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin center-card {
+  background: $card_bg;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.7rem;
+}
+
+@mixin hidden {
+  display: none;
+}
+
+@mixin h1 {
+  color: $main_heading;
+  font-family: $inter_font;
+  span {
+    color: $accent;
+  }
+}
+
+@mixin p {
+  font-family: $lexend_deca_font;
+  line-height: 1.6rem;
+  color: $stat_headings;
+}
+
+html,
+body,
+ul,
+ol {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  background-color: $main_bg;
+  overflow-y: scroll;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: opacity(0.5);
+}
+
+.number {
+  color: #fff;
+  font-family: $inter_font;
+  line-height: 0;
+}
+
+.name {
+  font-size: 12px;
+  color: $stat_headings;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: $lexend_deca_font;
+}
+
+h1 {
+  font-size: 2.1rem;
+  @include h1;
+}
+
+p {
+  font-size: 1.2rem;
+  @include p;
+}
+
+.card {
+  @include center-card;
+  @include flex-col;
+  min-width: 22.3rem;
+}
+
+.top-content {
+  display: block;
+  background-color: $accent;
+}
+
+.left-content {
+  text-align: center;
+  margin: 0.7rem;
+}
+
+.right-content {
+  @include hidden;
+}
+
+.statistics {
+  @include flex-col;
+
+  .statistics-child {
+    flex: 1;
+    padding-bottom: 1.3rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  h1 {
+    font-size: 36px;
+    @include h1;
+  }
+
+  p {
+    @include p;
+  }
+
+  .card {
+    @include center-card;
+    @include flex;
+  }
+
+  .top-content {
+    @include hidden;
+  }
+
+  .left-content {
+    text-align: left;
+    width: 26.7rem;
+    margin: 3.3rem;
+  }
+
+  .right-content {
+    display: block;
+    background-color: $accent;
+    width: 33.3rem;
+  }
+
+  .statistics {
+    margin-top: 4rem;
+    @include flex;
+
+    .statistics-child {
+      flex: 1;
+    }
+  }
+}
